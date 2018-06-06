@@ -79,9 +79,9 @@ class Coins extends PluginBase implements Listener {
     	
     	$player = $event->getPlayer();
         $uuid = $player->getClientID();
-        if (!is_file("/home/Lobby/eCoins/" . $player->getName() . ".yml")) {
+        if (!is_file("/home/SkyWars/plugins/Coins/resources/" . $player->getName() . ".yml")) {
         	
-        	$playerfile = new Config("/home/Lobby/eCoins/" . $player->getName() . ".yml", Config::YAML);
+        	$playerfile = new Config("/home/SkyWars/plugins/Coins/resources/" . $player->getName() . ".yml", Config::YAML);
             $playerfile->set("coins", 2500);
             $playerfile->save();
             
@@ -91,18 +91,18 @@ class Coins extends PluginBase implements Listener {
     
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
     	
-    	if ($command->getName() === "Coins") {
+    	if ($command->getName() === "coins") {
         	
-        	$playerfile = new Config("/home/Lobby/eCoins/" . $sender->getName() . ".yml", Config::YAML);                  
+        	$playerfile = new Config("/home/SkyWars/plugins/Coins/resources/" . $sender->getName() . ".yml", Config::YAML);                  
             $sender->sendMessage($this->prefix . "Du hast ".Color::GOLD . $playerfile->get("coins") . Color::WHITE . " Coins!");
         	       	
-        } else if ($command->getName() === "AddCoins") {
+        } else if ($command->getName() === "addcoins") {
         	
         	if ($sender->isOp()) {
         	
         	if (isset($args[0])) {
 
-                    $playerfile = new Config("/home/Lobby/eCoins/" . $args[0] . ".yml", Config::YAML);
+                    $playerfile = new Config("/home/SkyWars/plugins/Coins/resources/" . $args[0] . ".yml", Config::YAML);
                     $playerfile->set("coins", $playerfile->get("coins") + 10000);
                     $playerfile->save();
                     $sender->sendMessage(Color::GREEN . "10000 Coins gegeben!");
