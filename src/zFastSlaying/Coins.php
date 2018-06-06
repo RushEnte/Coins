@@ -71,7 +71,7 @@ class Coins extends PluginBase implements Listener {
 		
 		$this->getLogger()->info($this->prefix . Color::GREEN . "wurde aktiviert!");
         $this->getLogger()->info($this->prefix . Color::AQUA . "Made By" . Color::DARK_PURPLE . " zFastSlaying");
-		$this->getPluginManager()->registerEvents($this, $this);
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		
     }
     
